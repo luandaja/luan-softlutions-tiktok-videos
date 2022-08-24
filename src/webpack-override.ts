@@ -1,8 +1,24 @@
-import {WebpackOverrideFn} from 'remotion';
-
+import { WebpackOverrideFn } from 'remotion';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import { resolve } from 'path';
 export const webpackOverride: WebpackOverrideFn = (currentConfiguration) => {
 	return {
 		...currentConfiguration,
+		resolve: {
+			...currentConfiguration.resolve,
+			alias: {
+				...currentConfiguration.resolve?.alias,
+				'@components': resolve(process.cwd(), '/src/components/'),
+				'@compositions': resolve(process.cwd(), '/src/compositions/'),
+			},
+			plugins: [
+				...(currentConfiguration.resolve?.plugins ?? []),
+				// new TsconfigPathsPlugin({
+				// 	baseUrl: '.',
+				// 	configFile: './tsconfig.json',
+				// }),
+			],
+		},
 		module: {
 			...currentConfiguration.module,
 			rules: [

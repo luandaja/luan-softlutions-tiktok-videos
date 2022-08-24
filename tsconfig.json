@@ -9,6 +9,12 @@
 		"lib": ["es2015"],
 		"esModuleInterop": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
-	}
+		"forceConsistentCasingInFileNames": true,
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": ["./src/components/*"],
+			"@compositions/*": ["./src/compositions/*"]
+		}
+	},
+	"include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

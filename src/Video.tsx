@@ -1,17 +1,22 @@
-import {Composition} from 'remotion';
-import {MyComposition} from './Composition';
 import './style.css';
+import { Composition } from 'remotion';
+import { DesignPatternsRecomendations } from './compositions';
+import { tiktokRemotionVideo } from './constants/video-config';
+import React from 'react';
 
 export const RemotionVideo: React.FC = () => {
+	function getRemotionComponentDefinition(component: React.FC) {
+		return {
+			id: component.name,
+			component: component,
+		};
+	}
 	return (
 		<>
 			<Composition
-				id="MyComp"
-				component={MyComposition}
 				durationInFrames={240}
-				fps={30}
-				width={1280}
-				height={720}
+				{...getRemotionComponentDefinition(DesignPatternsRecomendations)}
+				{...tiktokRemotionVideo}
 			/>
 		</>
 	);
