@@ -10,6 +10,7 @@ export const webpackOverride: WebpackOverrideFn = (currentConfiguration) => {
 				...currentConfiguration.resolve?.alias,
 				'@components': resolve(process.cwd(), '/src/components/'),
 				'@compositions': resolve(process.cwd(), '/src/compositions/'),
+				'@custom-types': resolve(process.cwd(), '/src/types/'),
 			},
 			plugins: [
 				...(currentConfiguration.resolve?.plugins ?? []),

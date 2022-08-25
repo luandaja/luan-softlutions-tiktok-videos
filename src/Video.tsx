@@ -14,7 +14,7 @@ export const RemotionVideo: React.FC = () => {
 	return (
 		<>
 			<Composition
-				durationInFrames={240}
+				durationInFrames={600}
 				{...getRemotionComponentDefinition(DesignPatternsRecomendations)}
 				{...tiktokRemotionVideo}
 			/>

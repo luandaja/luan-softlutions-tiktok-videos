@@ -13,7 +13,9 @@
 		"baseUrl": ".",
 		"paths": {
 			"@components/*": ["./src/components/*"],
-			"@compositions/*": ["./src/compositions/*"]
+			"@compositions/*": ["./src/compositions/*"],
+			"@custom-types/*": ["./src/types/*"],
+			"@custom-types": ["./src/types"]
 		}
 	},
 	"include": ["./src/**/*.ts", "./src/**/*.tsx"]
