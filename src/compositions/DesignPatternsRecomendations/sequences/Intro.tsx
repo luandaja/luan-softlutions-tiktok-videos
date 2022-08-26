@@ -1,19 +1,23 @@
 import {
+	useEffect,
+	useState,
+} from 'react';
+
+import {
 	continueRender,
 	delayRender,
 	interpolate,
-	OffthreadVideo,
 	Sequence,
 	useCurrentFrame,
 	useVideoConfig,
 	Video,
 } from 'remotion';
-import { getVideoMetadata } from '@remotion/media-utils';
 
 import { Title } from '@components/Title';
 import { CustomSequenceProps } from '@custom-types';
+import { getVideoMetadata } from '@remotion/media-utils';
+
 import introVideo from '../assets/intro.mp4';
-import { useEffect, useMemo, useRef, useState } from 'react';
 
 export const Intro: React.FC<CustomSequenceProps> = ({
 	from,
@@ -47,7 +51,7 @@ export const Intro: React.FC<CustomSequenceProps> = ({
 	return (
 		<>
 			{videoDataisLoaded && (
-				<Sequence from={from} name="intro" durationInFrames={duration}>
+				<Sequence from={from} name="Intro" durationInFrames={duration}>
 					<Sequence from={0} durationInFrames={duration}>
 						<Video src={introVideo} />
 					</Sequence>

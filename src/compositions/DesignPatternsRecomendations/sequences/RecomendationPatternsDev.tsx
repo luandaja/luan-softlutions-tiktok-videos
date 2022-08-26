@@ -1,22 +1,16 @@
+import { useEffect } from 'react';
+
 import {
-	AbsoluteFill,
-	continueRender,
-	delayRender,
-	interpolate,
-	OffthreadVideo,
 	Sequence,
-	useCurrentFrame,
 	useVideoConfig,
 	Video,
 } from 'remotion';
-import { getVideoMetadata } from '@remotion/media-utils';
 
-import { Title } from '@components/Title';
+import { Alert } from '@components/Alert';
+import { CustomSequenceProps } from '@custom-types';
+
 import patternsDevVideo from '../assets/patternsdev.mp4';
 import mainVideo from '../assets/recomendaciones_patrones_diseño.mp4';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { CustomSequenceProps } from '@custom-types';
-import { Alert } from '@components/Alert';
 
 export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 	from,
@@ -24,15 +18,17 @@ export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 }) => {
 	const { fps, durationInFrames, height } = useVideoConfig();
 
-	const videoFragmentDurationInFrames = 291;
-	onSetSequenceDuration?.({ durationInFrames: videoFragmentDurationInFrames });
+	const videoClipTo = 289;
+	useEffect(() => {
+		onSetSequenceDuration?.({ durationInFrames: videoClipTo });
+	}, []);
 
 	const alertsStartFrame = [148, 170, 240];
 	return (
 		<Sequence
-			from={from - 2}
-			name="Patterns.dev recomendation"
-			durationInFrames={videoFragmentDurationInFrames}
+			from={from}
+			name="[recommendation] Patterns.dev"
+			durationInFrames={videoClipTo}
 		>
 			<Sequence from={0}>
 				<Video src={mainVideo} />
@@ -51,27 +47,21 @@ export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 					<Alert
 						alertCountIndex={1}
 						text="Dinamico"
-						durationInFrames={
-							videoFragmentDurationInFrames - fps - alertsStartFrame[0]
-						}
+						durationInFrames={videoClipTo - fps - alertsStartFrame[0]}
 					></Alert>
 				</Sequence>
 				<Sequence from={alertsStartFrame[1]} layout="none">
 					<Alert
 						alertCountIndex={2}
 						text="Claro"
-						durationInFrames={
-							videoFragmentDurationInFrames - fps - alertsStartFrame[1]
-						}
+						durationInFrames={videoClipTo - fps - alertsStartFrame[1]}
 					></Alert>
 				</Sequence>
 				<Sequence from={alertsStartFrame[2]} layout="none">
 					<Alert
 						alertCountIndex={3}
 						text="Orientado a Web development"
-						durationInFrames={
-							videoFragmentDurationInFrames - fps - alertsStartFrame[2]
-						}
+						durationInFrames={videoClipTo - fps - alertsStartFrame[2]}
 					></Alert>
 				</Sequence>
 			</div>
