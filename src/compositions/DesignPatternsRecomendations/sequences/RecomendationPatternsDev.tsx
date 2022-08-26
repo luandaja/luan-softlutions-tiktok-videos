@@ -7,6 +7,7 @@ import {
 } from 'remotion';
 
 import { Alert } from '@components/Alert';
+import { NotificationPop } from '@components/NotificationPop';
 import { CustomSequenceProps } from '@custom-types';
 
 import patternsDevVideo from '../assets/patternsdev.mp4';
@@ -41,6 +42,15 @@ export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 						src={patternsDevVideo}
 					/>
 				</Sequence>
+			</Sequence>
+			<Sequence from={45}>
+				<NotificationPop
+					imgUrl="https://ui-avatars.com/api/?background=random&name=%22Patterns%20Dev%22"
+					durationInFrames={269 - 45 - 30}
+					finalPosition="top"
+				>
+					https://www.<b>patterns.dev</b>
+				</NotificationPop>
 			</Sequence>
 			<div className="flex w-full flex-col">
 				<Sequence from={alertsStartFrame[0]} layout="none">
