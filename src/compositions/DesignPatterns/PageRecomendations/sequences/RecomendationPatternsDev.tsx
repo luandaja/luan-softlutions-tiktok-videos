@@ -1,18 +1,11 @@
-import { useEffect } from 'react';
-
-import {
-	Sequence,
-	useVideoConfig,
-	Video,
-} from 'remotion';
-
 import { Alert } from '@components/Alert';
 import { NotificationPop } from '@components/NotificationPop';
+import { VideoSequence } from '@components/sequences/VideoSequence';
 import { CustomSequenceProps } from '@custom-types';
-
+import { useEffect } from 'react';
+import { Sequence, useVideoConfig } from 'remotion';
 import patternsDevVideo from '../assets/patternsdev.mp4';
 import mainVideo from '../assets/recomendaciones_patrones_diseño.mp4';
-import { TitleSequence } from '@components/sequences/TitleSequence';
 
 export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 	from,
@@ -26,24 +19,32 @@ export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 	}, []);
 
 	const alertsStartFrame = [148, 170, 240];
+
 	return (
 		<Sequence
 			from={from}
 			name="[recommendation] Patterns.dev"
 			durationInFrames={videoClipTo}
 		>
-			<Sequence from={0}>
-				<Video src={mainVideo} />
-			</Sequence>
-			<Sequence from={45} durationInFrames={60}>
-				<Sequence from={-9 * 30}>
-					<Video
-						className="absolute w-1/3 rounded-3xl top-1/4 shadow-2xl left-5 shadow-blue-400"
-						muted
-						src={patternsDevVideo}
-					/>
-				</Sequence>
-			</Sequence>
+			<VideoSequence
+				from={0}
+				src={mainVideo}
+				name="Video Sequence"
+			></VideoSequence>
+			<VideoSequence
+				from={45}
+				videoProps={{
+					muted: true,
+					className:
+						'w-5/12 h-fit rounded-3xl shadow-2xl shadow-blue-400 self-center',
+				}}
+				durationInFrames={60}
+				src={patternsDevVideo}
+				videoStartFrame={9 * 30}
+				name="Aux video"
+				useContainer={true}
+			></VideoSequence>
+
 			<Sequence from={45}>
 				<NotificationPop
 					imgUrl="https://ui-avatars.com/api/?background=random&name=%22Patterns%20Dev%22"

@@ -1,11 +1,20 @@
+import { Alert } from '@components/ui/Alert';
 import { Tiktok } from '@components/compositions';
 import { TitleSequence } from '@components/sequences/TitleSequence';
 import { Avatar } from '@mui/material';
 import React from 'react';
 import { Img, Sequence, staticFile } from 'remotion';
+import { WithContainer } from '@components/layout/Container';
+import { AlertSequence } from '@components/sequences/AlertSequence';
 
 export const TiktokTestComposition = () => {
-	return <Tiktok.Still durationInFrames={3000} id="Tiktok-Test" component={Test}></Tiktok.Still>;
+	return (
+		<Tiktok.Still
+			durationInFrames={3000}
+			id="Tiktok-Test"
+			component={Test}
+		></Tiktok.Still>
+	);
 };
 
 export const Test = () => {
@@ -21,18 +30,51 @@ export const Test = () => {
       </div>
     </Sequence> */}
 
-			<TitleSequence from={0} animated={true} to={200} className="self-start text-white">
+			<TitleSequence
+				from={0}
+				animated={true}
+				to={200}
+				className="self-start text-white"
+			>
 				Esto es un test muy largo
 			</TitleSequence>
 
-			<TitleSequence from={100} animated={true} durationInFrames={100} className="text-red-400 self-center">
+			<TitleSequence
+				from={100}
+				animated={true}
+				durationInFrames={100}
+				className="text-red-400 self-center"
+			>
 				Esto es un test muy largo
 			</TitleSequence>
-			<TitleSequence from={0} animated={true} to={200} className=" text-amber-500 self-end">
+			<TitleSequence
+				from={0}
+				animated={true}
+				to={200}
+				className=" text-amber-500 self-end"
+			>
 				Esto es un test muy largo
 			</TitleSequence>
 
+			<AlertSequence.Container>
+				<AlertSequence.Alert from={0} to={100} animated={true} type="info">
+					asd
+				</AlertSequence.Alert>
+
+				<AlertSequence.Alert from={0} to={100} animated={true} type="danger">
+					asddd
+				</AlertSequence.Alert>
+			</AlertSequence.Container>
+
+			{/* 
 			<Avatar>H</Avatar>
+
+			<WithContainer className="z-50 flex-wrap content-start flex-col">
+				<Alert.Info>Hola</Alert.Info>
+				<Alert.Warning>Como</Alert.Warning>
+				<Alert.Success>Estas</Alert.Success>
+				<Alert.Danger>????</Alert.Danger>
+			</WithContainer> */}
 		</>
 	);
 };

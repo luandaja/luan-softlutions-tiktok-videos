@@ -12,6 +12,7 @@ export const webpackOverride: WebpackOverrideFn = (currentConfiguration) => {
 				'@compositions': resolve(process.cwd(), '/src/compositions/'),
 				'@custom-types': resolve(process.cwd(), '/src/types/'),
 				'@services': resolve(process.cwd(), '/src/services'),
+				'@hooks': resolve(process.cwd(), '/src/hooks'),
 			},
 			plugins: [
 				...(currentConfiguration.resolve?.plugins ?? []),
