@@ -1,3 +1,2 @@
-import { CustomSequenceProps } from './CustomSequenceProps';
-
-export { CustomSequenceProps };
+export * from './CompositionProps';
+export * from './CustomSequenceProps';

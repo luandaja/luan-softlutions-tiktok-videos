@@ -11,13 +11,16 @@
 	"repository": {},
 	"license": "UNLICENSED",
 	"dependencies": {
-		"@remotion/cli": "^3.0.0",
-		"@remotion/eslint-config": "^3.0.0",
+		"@emotion/react": "^11.10.0",
+		"@emotion/styled": "^11.10.0",
+		"@mui/material": "^5.10.3",
+		"@remotion/cli": "^3.2.11",
+		"@remotion/eslint-config": "^3.2.11",
 		"eslint": "^8.14.0",
 		"prettier": "^2.6.2",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
-		"remotion": "^3.0.0",
+		"remotion": "^3.2.11",
 		"typescript": "4.6.3"
 	},
 	"devDependencies": {

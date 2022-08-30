@@ -2,25 +2,15 @@ import './style.css';
 
 import React from 'react';
 
-import { Composition } from 'remotion';
-
-import { DesignPatternsRecomendations } from './compositions';
-import { tiktokRemotionVideo } from './constants/video-config';
+import { DesignPatternsComposition } from '@compositions/DesignPatterns/DesignPatternsComposition';
+import { TiktokTestComposition } from '@compositions/TiktokTest/TiktokTestComposition';
 
 export const RemotionVideo: React.FC = () => {
-	function getRemotionComponentDefinition(component: React.FC) {
-		return {
-			id: component.name,
-			component: component,
-		};
-	}
+
 	return (
 		<>
-			<Composition
-				durationInFrames={2762}
-				{...getRemotionComponentDefinition(DesignPatternsRecomendations)}
-				{...tiktokRemotionVideo}
-			/>
+			<DesignPatternsComposition></DesignPatternsComposition>
+			<TiktokTestComposition></TiktokTestComposition>
 		</>
 	);
 };

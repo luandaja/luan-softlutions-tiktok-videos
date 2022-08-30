@@ -1,7 +1,17 @@
 module.exports = {
 	content: ['./src/**/*.{ts,tsx}'],
 	theme: {
-		extend: {},
+		container: {
+			center: true,
+			// padding: {
+			// 	DEFAULT: '60px',
+			// },
+		},
+		extend: {
+			spacing: {
+				144: '36rem',
+			},
+		},
 	},
 	plugins: [],
 };
