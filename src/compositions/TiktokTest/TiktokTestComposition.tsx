@@ -1,6 +1,17 @@
 import { Tiktok } from "@components/compositions"
 import { TitleSequence } from "@components/sequences/TitleSequence"
+import { Alert, Avatar, Stack } from "@mui/material"
 import { Img, Sequence, staticFile } from "remotion"
+
+import React from 'react'
+
+
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 
 export const TiktokTestComposition = () => {
@@ -26,15 +37,19 @@ export const Test = () => {
       </div>
     </Sequence> */}
 
-    <TitleSequence from={0} animated={true} to={100} className="self-end justify-end text-white">
+    <TitleSequence from={0} animated={true} to={200} className="self-start text-white">
       Esto es un test muy largo
     </TitleSequence>
 
-    <TitleSequence from={0} animated={true} to={200} className=" text-amber-500 self-center">
+    <TitleSequence from={100} animated={true} durationInFrames={100} className="text-red-400 self-center">
       Esto es un test muy largo
     </TitleSequence>
-    <TitleSequence from={0} animated={true} to={200} className=" text-amber-500 self-start">
+    <TitleSequence from={0} animated={true} to={200} className=" text-amber-500 self-end">
       Esto es un test muy largo
     </TitleSequence>
+
+    <Avatar >H</Avatar>
+
+
   </>
 }

@@ -15,39 +15,41 @@ export const TitleSequence: React.FC<
   children,
   className = '',
   animated = false,
+  durationInFrames,
   to,
+  name,
   animationDurationInFrames = 15
 }) => {
     const { durationInFrames: defaultDurationInFrames } = useVideoConfig();
     const frame = useCurrentFrame();
-    const durationInFrames = to ?? defaultDurationInFrames;
+    const finalDurationInFrames = to ?? (durationInFrames !== undefined ? durationInFrames + from : undefined) ?? defaultDurationInFrames;
     const opacity = animated
       ? interpolate(
         frame,
-        [from, from + animationDurationInFrames, durationInFrames - animationDurationInFrames, durationInFrames],
+        [from, from + animationDurationInFrames, finalDurationInFrames - animationDurationInFrames, finalDurationInFrames],
         [0, 1, 1, 0]
       )
       : 1;
 
     return (
       <>
-        <Container>
+        <Container className='z-50'>
           <Sequence
             from={from}
             layout="none"
-            name='Title'
-            durationInFrames={durationInFrames - from}
+            name={name ?? 'Title'}
+            durationInFrames={finalDurationInFrames - from}
           >
-            <Sequence
+            {/* <Sequence
               from={0}
               layout="none"
+            > */}
+            <h1 style={{ opacity: opacity }}
+              className={`${className} font-mono text-width font-bold decoration-slate-900 drop-shadow-2xl text-white`}
             >
-              <h1 style={{ opacity: opacity }}
-                className={`${className} font-mono text-7xl font-bold decoration-slate-900 drop-shadow-2xl text-white`}
-              >
-                {children}
-              </h1>
-            </Sequence>
+              {children}
+            </h1>
+            {/* </Sequence> */}
           </Sequence>
         </Container>
       </>

@@ -12,6 +12,7 @@ import { CustomSequenceProps } from '@custom-types';
 
 import patternsDevVideo from '../assets/patternsdev.mp4';
 import mainVideo from '../assets/recomendaciones_patrones_diseño.mp4';
+import { TitleSequence } from '@components/sequences/TitleSequence';
 
 export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 	from,
