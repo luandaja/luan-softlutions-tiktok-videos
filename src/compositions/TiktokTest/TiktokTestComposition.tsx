@@ -61,11 +61,23 @@ export const Test = () => {
 					asd
 				</AlertSequence.Alert>
 
-				<AlertSequence.Alert from={0} to={100} animated={true} type="danger">
+				<AlertSequence.Alert from={0} to={200} animated={true} type="danger">
+					asddd
+				</AlertSequence.Alert>
+				<AlertSequence.Alert from={0} to={200} animated={true} type="danger">
 					asddd
 				</AlertSequence.Alert>
 			</AlertSequence.Container>
+			{/* 
+			<AlertSequence.Container className="justify-end">
+				<AlertSequence.Alert from={0} to={100} animated={true} type="info">
+					asd
+				</AlertSequence.Alert>
 
+				<AlertSequence.Alert from={0} to={100} animated={true} type="danger">
+					asddd
+				</AlertSequence.Alert>
+			</AlertSequence.Container> */}
 			{/* 
 			<Avatar>H</Avatar>
 

@@ -1,5 +1,6 @@
 import { Alert } from '@components/Alert';
 import { NotificationPop } from '@components/NotificationPop';
+import { AlertSequence } from '@components/sequences/AlertSequence';
 import { VideoSequence } from '@components/sequences/VideoSequence';
 import { CustomSequenceProps } from '@custom-types';
 import { useEffect } from 'react';
@@ -18,7 +19,11 @@ export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 		onSetSequenceDuration?.({ durationInFrames: videoClipTo });
 	}, []);
 
-	const alertsStartFrame = [148, 170, 240];
+	const alerts = [
+		{ from: 148, text: 'Dinamico' },
+		{ from: 170, text: 'Claro' },
+		{ from: 240, text: 'Orientado a Web development' },
+	];
 
 	return (
 		<Sequence
@@ -54,7 +59,16 @@ export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 					https://www.<b>patterns.dev</b>
 				</NotificationPop>
 			</Sequence>
-			<div className="flex w-full flex-col">
+
+			<AlertSequence.Container className="justify-start flex-col-reverse">
+				{alerts.map((x) => (
+					<AlertSequence.Alert from={x.from} type="info">
+						{x.text}
+					</AlertSequence.Alert>
+				))}
+			</AlertSequence.Container>
+
+			{/* <div className="flex w-full flex-col">
 				<Sequence from={alertsStartFrame[0]} layout="none">
 					<Alert
 						alertCountIndex={1}
@@ -76,7 +90,7 @@ export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 						durationInFrames={videoClipTo - fps - alertsStartFrame[2]}
 					></Alert>
 				</Sequence>
-			</div>
+			</div> */}
 		</Sequence>
 	);
 };

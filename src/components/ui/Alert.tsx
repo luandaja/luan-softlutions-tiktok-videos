@@ -11,14 +11,14 @@ const AlertBase: React.FC<{
 }> = ({ color = 'blue', icon, type, showBorder = false, children, style }) => {
 	return (
 		<div
-			className={` flex-row w-full rounded-md bg-${color}-50 h-fit px-4 py-5 ${
+			className={`transition-all flex-row w-full rounded-md bg-${color}-50 h-fit px-4 py-5 ${
 				showBorder ? `border-l-8 border-${color}-500` : ''
 			}`}
 			style={style}
 		>
 			<div className="flex justify-between py-3">
 				<div className="flex">
-					<div>
+					<div className="">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							className={`h-16 w-16 text-${color}-500`}

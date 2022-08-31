@@ -50,7 +50,13 @@ const AlertBody: React.FC<
 				name={name ?? 'Title'}
 				durationInFrames={finalDurationInFrames - from}
 			>
-				<Alert2 style={{ opacity: opacity }}> {children}</Alert2>
+				<Alert2
+					style={{
+						opacity: opacity,
+					}}
+				>
+					{children}
+				</Alert2>
 			</Sequence>
 		</>
 	);
@@ -58,10 +64,15 @@ const AlertBody: React.FC<
 
 const AlertContainer: React.FC<{
 	children: React.ReactNode | React.ReactNode[];
-}> = ({ children }) => {
+	className?: string;
+}> = ({ children, className = '' }) => {
 	return (
 		<>
-			<WithContainer className="z-50 flex-col">{children}</WithContainer>
+			<WithContainer
+				className={`${className} z-50 flex-col flex-nowrap ease-in-out transition-all`}
+			>
+				{children}
+			</WithContainer>
 		</>
 	);
 };
