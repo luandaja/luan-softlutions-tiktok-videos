@@ -12,7 +12,10 @@ import {
 import { SequenceProps } from 'remotion/dist/Sequence';
 
 export const TitleSequence: React.FC<
-	GenericReactProp<SequenceProps & InterpolateProps>
+	SequenceProps &
+		InterpolateProps &
+		Pick<GenericReactProp, 'children'> &
+		Pick<GenericReactProp, 'className'>
 > = ({
 	from,
 	children,

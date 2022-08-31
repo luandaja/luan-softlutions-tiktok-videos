@@ -8,3 +8,7 @@ out
 
 public/*.mp4
 src/**/*.mp4
+
+
+public/*.mov
+src/**/*.mov

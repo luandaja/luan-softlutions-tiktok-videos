@@ -1,3 +1,4 @@
+import { AlertProps } from '@custom-types/AlertProps';
 import React from 'react';
 
 const AlertBase: React.FC<{
@@ -8,11 +9,20 @@ const AlertBase: React.FC<{
 	showBorder?: boolean;
 	children: React.ReactNode | string;
 	style?: React.CSSProperties;
-}> = ({ color = 'blue', icon, type, showBorder = false, children, style }) => {
+	customTypeName?: string;
+}> = ({
+	color = 'blue',
+	icon,
+	type,
+	showBorder = false,
+	children,
+	style,
+	customTypeName,
+}) => {
 	return (
 		<>
 			<div
-				className={`transition-all flex-row w-full rounded-md bg-${color}-50 h-fit px-4 py-5 ${
+				className={`transition-all flex-row w-full rounded-md bg-${color}-50 h-fit px-4 py-3 ${
 					showBorder ? `border-l-8 border-${color}-500` : ''
 				}`}
 				style={style}
@@ -33,7 +43,7 @@ const AlertBase: React.FC<{
 							<span
 								className={`text-${color}-500 font-semibold text-4xl capitalize`}
 							>
-								{type}
+								{customTypeName ?? type}
 							</span>
 							<div className={`text-${color}-500`}>
 								<div className="mt-3 text-[2.5rem] uppercase font-semibold  ">
@@ -48,16 +58,10 @@ const AlertBase: React.FC<{
 	);
 };
 
-const Info = ({
-	children,
-	style,
-}: {
-	style: React.CSSProperties;
-	children: React.ReactNode | string;
-}) => (
+const Info = ({ children, ...props }: AlertProps) => (
 	<AlertBase
+		{...props}
 		className="bg-blue-50 text-blue-500"
-		style={style}
 		color="blue"
 		type="info"
 		icon={
@@ -72,16 +76,10 @@ const Info = ({
 	</AlertBase>
 );
 
-const Warning = ({
-	children,
-	style,
-}: {
-	style: React.CSSProperties;
-	children: React.ReactNode | string;
-}) => (
+const Warning = ({ children, ...props }: AlertProps) => (
 	<AlertBase
+		{...props}
 		className="bg-amber-50 text-amber-500"
-		style={style}
 		color="amber"
 		type="warning"
 		icon={
@@ -96,16 +94,10 @@ const Warning = ({
 	</AlertBase>
 );
 
-const Success = ({
-	children,
-	style,
-}: {
-	style: React.CSSProperties;
-	children: React.ReactNode | string;
-}) => (
+const Success = ({ children, ...props }: AlertProps) => (
 	<AlertBase
+		{...props}
 		className="bg-green-50 text-green-500 border-green-500"
-		style={style}
 		color="green"
 		type="success"
 		showBorder={true}
@@ -121,16 +113,10 @@ const Success = ({
 	</AlertBase>
 );
 
-const Danger = ({
-	children,
-	style,
-}: {
-	style: React.CSSProperties;
-	children: React.ReactNode | string;
-}) => (
+const Danger = ({ children, ...props }: AlertProps) => (
 	<AlertBase
+		{...props}
 		className="bg-red-50 text-red-500 border-red-500"
-		style={style}
 		color="red"
 		type="danger"
 		showBorder={true}

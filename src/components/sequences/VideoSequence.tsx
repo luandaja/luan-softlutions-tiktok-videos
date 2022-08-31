@@ -28,14 +28,14 @@ export const VideoSequence: React.FC<
 		<>
 			<WithContainer disableContainer={!useContainer} {...containerProps}>
 				<Sequence
-					layout="none"
+					layout={useContainer ? 'none' : 'absolute-fill'}
 					from={from}
 					durationInFrames={durationInFrames}
 					{...mainSequenceProps}
 				>
 					<Video
 						startFrom={videoStartFrame}
-						endAt={videoEndFrame}
+						endAt={videoEndFrame + videoStartFrame}
 						src={src}
 						{...videoProps}
 					/>

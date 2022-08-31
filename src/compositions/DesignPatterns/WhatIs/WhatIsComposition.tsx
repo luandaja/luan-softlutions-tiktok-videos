@@ -1,13 +1,15 @@
 import { TiktokComposition } from '@components/compositions/TiktokComposition';
 import { getRemotionCompositionDefinitionFromComponent } from '@services/remotion-composition.service';
-import { PageRecomendations } from './components/PageRecomendations';
+import { WhatIsMain } from './components/WhatIsMain';
 
-export const PageRecomendationsComposition = () => {
+const Entry: React.FC = () => <></>;
+
+export const WhatIsComposition = () => {
 	return (
 		<>
 			<TiktokComposition
-				durationInFrames={2762}
-				{...getRemotionCompositionDefinitionFromComponent(PageRecomendations)}
+				durationInFrames={2524}
+				{...getRemotionCompositionDefinitionFromComponent(WhatIsMain)}
 			></TiktokComposition>
 		</>
 	);

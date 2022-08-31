@@ -5,10 +5,13 @@ import { SequenceProps } from 'remotion/dist/Sequence';
 import { Alert } from '@components/ui/Alert';
 import { InterpolateProps } from '@custom-types';
 import { useInterpolate } from '@hooks';
+import { AlertProps } from '@custom-types/AlertProps';
 
 const AlertBody: React.FC<
 	InterpolateProps &
-		SequenceProps & { type: 'info' | 'warning' | 'success' | 'danger' }
+		SequenceProps & {
+			type: 'info' | 'warning' | 'success' | 'danger';
+		} & Pick<AlertProps, 'customTypeName'>
 > = ({
 	from,
 	to,
@@ -19,6 +22,7 @@ const AlertBody: React.FC<
 
 	children,
 	type,
+	customTypeName,
 }) => {
 	const [opacity, finalDurationInFrames] = useInterpolate({
 		from,
@@ -54,6 +58,7 @@ const AlertBody: React.FC<
 					style={{
 						opacity: opacity,
 					}}
+					customTypeName={customTypeName}
 				>
 					{children}
 				</Alert2>
@@ -69,7 +74,7 @@ const AlertContainer: React.FC<{
 	return (
 		<>
 			<WithContainer
-				className={`${className} z-50 flex-col flex-nowrap ease-in-out transition-all opacity-90`}
+				className={`${className} z-50 flex-col flex-nowrap ease-in-out transition-all opacity-80`}
 			>
 				{children}
 			</WithContainer>
