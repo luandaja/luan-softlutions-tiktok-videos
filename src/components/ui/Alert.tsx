@@ -10,39 +10,41 @@ const AlertBase: React.FC<{
 	style?: React.CSSProperties;
 }> = ({ color = 'blue', icon, type, showBorder = false, children, style }) => {
 	return (
-		<div
-			className={`transition-all flex-row w-full rounded-md bg-${color}-50 h-fit px-4 py-5 ${
-				showBorder ? `border-l-8 border-${color}-500` : ''
-			}`}
-			style={style}
-		>
-			<div className="flex justify-between py-3">
-				<div className="flex">
-					<div className="">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							className={`h-16 w-16 text-${color}-500`}
-							viewBox="0 0 20 20"
-							fill="currentColor"
-						>
-							{icon}
-						</svg>
-					</div>
-					<div className="self-center ml-3">
-						<span
-							className={`text-${color}-500 font-semibold text-4xl capitalize`}
-						>
-							{type}
-						</span>
-						<div className={`text-${color}-500`}>
-							<div className="mt-3 text-[2.5rem] uppercase font-semibold  ">
-								{children}
+		<>
+			<div
+				className={`transition-all flex-row w-full rounded-md bg-${color}-50 h-fit px-4 py-5 ${
+					showBorder ? `border-l-8 border-${color}-500` : ''
+				}`}
+				style={style}
+			>
+				<div className="flex justify-between py-3">
+					<div className="flex">
+						<div className="">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								className={`h-16 w-16 text-${color}-500`}
+								viewBox="0 0 20 20"
+								fill="currentColor"
+							>
+								{icon}
+							</svg>
+						</div>
+						<div className="self-center ml-3">
+							<span
+								className={`text-${color}-500 font-semibold text-4xl capitalize`}
+							>
+								{type}
+							</span>
+							<div className={`text-${color}-500`}>
+								<div className="mt-3 text-[2.5rem] uppercase font-semibold  ">
+									{children}
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

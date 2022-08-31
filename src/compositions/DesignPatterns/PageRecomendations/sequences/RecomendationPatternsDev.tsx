@@ -61,36 +61,12 @@ export const RecomendationPatternsDev: React.FC<CustomSequenceProps> = ({
 			</Sequence>
 
 			<AlertSequence.Container className="justify-start flex-col-reverse">
-				{alerts.map((x) => (
-					<AlertSequence.Alert from={x.from} type="info">
+				{alerts.map((x, i) => (
+					<AlertSequence.Alert from={x.from} type="info" key={i}>
 						{x.text}
 					</AlertSequence.Alert>
 				))}
 			</AlertSequence.Container>
-
-			{/* <div className="flex w-full flex-col">
-				<Sequence from={alertsStartFrame[0]} layout="none">
-					<Alert
-						alertCountIndex={1}
-						text="Dinamico"
-						durationInFrames={videoClipTo - fps - alertsStartFrame[0]}
-					></Alert>
-				</Sequence>
-				<Sequence from={alertsStartFrame[1]} layout="none">
-					<Alert
-						alertCountIndex={2}
-						text="Claro"
-						durationInFrames={videoClipTo - fps - alertsStartFrame[1]}
-					></Alert>
-				</Sequence>
-				<Sequence from={alertsStartFrame[2]} layout="none">
-					<Alert
-						alertCountIndex={3}
-						text="Orientado a Web development"
-						durationInFrames={videoClipTo - fps - alertsStartFrame[2]}
-					></Alert>
-				</Sequence>
-			</div> */}
 		</Sequence>
 	);
 };

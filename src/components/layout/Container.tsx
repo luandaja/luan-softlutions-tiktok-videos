@@ -15,7 +15,7 @@ export const WithContainer = ({
 				<> {children}</>
 			) : (
 				<div
-					className={`${className} absolute pl-24 pr-40 pt-56 pb-144 opacity-90 w-full h-full flex gap-4 flex-wrap`}
+					className={`${className} absolute pl-24 pr-40 pt-56 pb-144 w-full h-full flex gap-4 flex-wrap`}
 				>
 					{children}
 				</div>

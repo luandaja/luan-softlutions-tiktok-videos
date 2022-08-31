@@ -69,7 +69,7 @@ const AlertContainer: React.FC<{
 	return (
 		<>
 			<WithContainer
-				className={`${className} z-50 flex-col flex-nowrap ease-in-out transition-all`}
+				className={`${className} z-50 flex-col flex-nowrap ease-in-out transition-all opacity-90`}
 			>
 				{children}
 			</WithContainer>

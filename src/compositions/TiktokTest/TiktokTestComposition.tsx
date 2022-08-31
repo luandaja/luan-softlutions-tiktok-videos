@@ -6,6 +6,7 @@ import React from 'react';
 import { Img, Sequence, staticFile } from 'remotion';
 import { WithContainer } from '@components/layout/Container';
 import { AlertSequence } from '@components/sequences/AlertSequence';
+import { ImageSequence } from '@components/sequences/ImageSequence';
 
 export const TiktokTestComposition = () => {
 	return (
@@ -68,6 +69,26 @@ export const Test = () => {
 					asddd
 				</AlertSequence.Alert>
 			</AlertSequence.Container>
+
+			<ImageSequence
+				src={tiktokSafeZoneImage}
+				from={0}
+				useContainer={true}
+				// className="justify-around content-end "
+				containerProps={{
+					className: 'z-[55] opacity-100 justify-around content-end',
+				}}
+				className="w-6/12 h-fit bg-purple-500"
+			></ImageSequence>
+
+			<ImageSequence
+				src={tiktokSafeZoneImage}
+				from={0}
+				useContainer={false}
+				// className="justify-around content-end "
+				className="w-8/12 h-fit self-center mt-[120%] mb-auto bg-red-500 z-50"
+				imgProps={{}}
+			></ImageSequence>
 			{/* 
 			<AlertSequence.Container className="justify-end">
 				<AlertSequence.Alert from={0} to={100} animated={true} type="info">
