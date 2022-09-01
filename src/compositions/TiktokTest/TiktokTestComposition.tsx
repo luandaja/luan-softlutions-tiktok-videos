@@ -43,7 +43,7 @@ export const Test = () => {
 			<TitleSequence
 				from={100}
 				animated={true}
-				durationInFrames={100}
+				durationInFrames={130}
 				className="text-red-400 self-center"
 			>
 				Esto es un test muy largo

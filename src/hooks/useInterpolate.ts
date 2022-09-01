@@ -14,9 +14,7 @@ export function useInterpolate({
 
 	const finalDurationInFrames =
 		to ??
-		(durationInFrames !== undefined
-			? durationInFrames + animationDurationInFrames
-			: undefined) ??
+		(durationInFrames !== undefined ? durationInFrames + from : undefined) ??
 		defaultDurationInFrames;
 	if (!animated) return [noAnimatedValue, finalDurationInFrames];
 

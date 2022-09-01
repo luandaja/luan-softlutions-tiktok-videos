@@ -15,7 +15,7 @@ export const TitleSequence: React.FC<
 	SequenceProps &
 		InterpolateProps &
 		Pick<GenericReactProp, 'children'> &
-		Pick<GenericReactProp, 'className'>
+		Pick<GenericReactProp, 'className'> & { useContainer?: boolean }
 > = ({
 	from,
 	children,
@@ -25,6 +25,7 @@ export const TitleSequence: React.FC<
 	to,
 	name,
 	animationDurationInFrames = 15,
+	useContainer = true,
 }) => {
 	const [opacity, finalDurationInFrames] = useInterpolate({
 		from,
@@ -37,7 +38,7 @@ export const TitleSequence: React.FC<
 	});
 	return (
 		<>
-			<WithContainer className="z-50">
+			<WithContainer className="z-50" disableContainer={!useContainer}>
 				<Sequence
 					from={from}
 					layout="none"

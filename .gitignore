@@ -12,3 +12,5 @@ src/**/*.mp4
 
 public/*.mov
 src/**/*.mov
+
+src/constants/api.ts
