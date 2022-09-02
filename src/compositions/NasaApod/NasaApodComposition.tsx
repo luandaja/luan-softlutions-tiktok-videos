@@ -1,13 +1,18 @@
 import { TiktokComposition } from '@components/compositions/TiktokComposition';
 import { ImageSequence } from '@components/sequences/ImageSequence';
 import { TitleSequence } from '@components/sequences/TitleSequence';
+import { Animation } from '@components/ui/Animation';
+import { useInterpolate } from '@hooks';
 import React, { useCallback, useEffect, useState } from 'react';
 import {
 	continueRender,
 	delayRender,
+	interpolate,
 	Sequence,
 	useCurrentFrame,
 	useVideoConfig,
+	staticFile,
+	Audio,
 } from 'remotion';
 import { apiKey } from '../../constants/api';
 
@@ -43,30 +48,43 @@ const NasaApodVideo = () => {
 	useEffect(() => {
 		fetchData();
 	}, [fetchData]);
+	const backgroundMusic = staticFile('musicnasaapod.webm');
+	const blurLayerOpacity = interpolate(frame, [45, 60], [1, 0]);
+	const imageTranslation = interpolate(
+		frame,
+		[130, 160, 215, 225],
+		[0, 16, 16, 0],
+		{
+			extrapolateRight: 'clamp',
+			extrapolateLeft: 'clamp',
+		}
+	);
+
+	const imageScale = interpolate(frame, [0, 214, 215, 225], [1, 1, 1, 6], {
+		extrapolateRight: 'clamp',
+	});
 
 	return (
 		<>
+			<Audio src={backgroundMusic} startFrom={8}></Audio>
 			<div className="bg-gradient-to-r rotate-45 scale-[2] from-green-400 to-blue-500 absolute w-full h-full z-[-1]"></div>
 			<ImageSequence
 				from={0}
 				durationInFrames={15 * fps}
 				src={data?.url}
-				className={
-					frame < 150
-						? 'transition ease-in-out m-auto w-11/12 shadow-2xl '
-						: frame < 7 * 30
-						? 'transition duration-1000 ease-in-out m-auto w-11/12 shadow-2xl -translate-y-2/4'
-						: 'transition duration-500 ease-in-out m-auto w-11/12 shadow-2xl -translate-y-2/4 scale-[5] blur-3xl'
-				}
+				className={' m-auto w-11/12 shadow-2xl'}
+				imgProps={{
+					style: {
+						translate: `0 -${imageTranslation}rem`,
+						scale: imageScale * 100 + '%',
+					},
+				}}
 			></ImageSequence>
 
-			<Sequence from={0} durationInFrames={3 * fps}>
+			<Sequence from={0} durationInFrames={2 * fps}>
 				<div
-					className={
-						frame < 60
-							? ' transition ease-in-out backdrop-blur-md bg-black/30 z-10 h-full w-full absolute'
-							: ' transition duration-1000 ease-in-out backdrop-blur-md scale-y-0 bg-black/30 z-0 h-full w-full absolute'
-					}
+					className="backdrop-blur-3xl bg-black/30 z-10 h-full w-full absolute"
+					style={{ opacity: blurLayerOpacity }}
 				/>
 				<TitleSequence
 					from={0}

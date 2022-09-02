@@ -1,5 +1,6 @@
 import { WithContainer } from '@components/layout/Container';
-import React from 'react';
+import { GenericReactProp } from '@custom-types/GenericReactProp';
+import React, { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 import { Img, Sequence, Video } from 'remotion';
 import { SequenceProps } from 'remotion/dist/Sequence';
 
