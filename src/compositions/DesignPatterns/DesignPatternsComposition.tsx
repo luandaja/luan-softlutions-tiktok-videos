@@ -6,8 +6,10 @@ export const DesignPatternsComposition = () => {
 	return (
 		<>
 			<Folder name="Design-Patterns">
-				<PageRecomendationsComposition></PageRecomendationsComposition>
-				<WhatIsComposition></WhatIsComposition>
+				<Folder name="[legacy] require scalation rate 1">
+					<PageRecomendationsComposition></PageRecomendationsComposition>
+					<WhatIsComposition></WhatIsComposition>
+				</Folder>
 			</Folder>
 		</>
 	);
