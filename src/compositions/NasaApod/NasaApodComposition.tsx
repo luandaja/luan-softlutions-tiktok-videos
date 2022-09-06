@@ -21,7 +21,7 @@ export const NasaApodComposition = () => {
 		<>
 			<TiktokComposition
 				id="NasaApod"
-				durationInFrames={7.5 * 30}
+				durationInFrames={8 * 30}
 				component={NasaApodVideo}
 			></TiktokComposition>
 		</>
@@ -32,7 +32,7 @@ const NasaApodVideo = () => {
 	const { fps } = useVideoConfig();
 	const frame = useCurrentFrame();
 
-	const [data, setData] = useState(null);
+	const [data, setData] = useState({} as { [key: string]: any });
 	const [handle] = useState(() => delayRender());
 
 	const fetchData = useCallback(async () => {
@@ -60,7 +60,7 @@ const NasaApodVideo = () => {
 		}
 	);
 
-	const imageScale = interpolate(frame, [0, 214, 215, 225], [1, 1, 1, 6], {
+	const imageScale = interpolate(frame, [0, 214, 215, 8 * 30], [1, 1, 1, 5], {
 		extrapolateRight: 'clamp',
 	});
 
